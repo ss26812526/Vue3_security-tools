@@ -12,6 +12,13 @@ watchEffect(() => {
 
 // 取得當前路由，用於判斷是否顯示返回按鈕
 const route = useRoute()
+
+const selected = ref([])
+const options = ref([
+  { value: 'A', text: 'One' },
+  { value: 'B', text: 'Two' },
+  { value: 'C', text: 'Three' },
+])
 </script>
 
 <template>
@@ -22,9 +29,7 @@ const route = useRoute()
 
       <div class="nav-right">
         <!-- 返回首頁按鈕（非首頁時顯示） -->
-        <RouterLink v-if="route.path !== '/'" to="/" class="back-btn">
-          ← 返回首頁
-        </RouterLink>
+        <RouterLink v-if="route.path !== '/'" to="/" class="back-btn"> ← 返回首頁 </RouterLink>
 
         <!-- 主題切換開關 -->
         <label class="switch">
@@ -40,6 +45,16 @@ const route = useRoute()
       <RouterView />
     </main>
   </div>
+
+  <span>Selected: {{ selected }}</span>
+  <hr />
+  <template v-for="item of options" :key="item.value">
+    <input type="checkbox" v-model="selected" :value="item.value" /> {{ item.text }}
+  </template>
+
+  <select v-model="selected" multiple>
+    <option v-for="item of options" :value="item.value" :key="item.value">{{ item.text }}</option>
+  </select>
 </template>
 
 <style scoped>
@@ -47,7 +62,9 @@ const route = useRoute()
   min-height: 100vh;
   background: #fff;
   color: #2c3e50;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 .app-container.dark {
   background: #1a1a2e;
@@ -112,7 +129,7 @@ const route = useRoute()
 }
 .slider:before {
   position: absolute;
-  content: "";
+  content: '';
   height: 18px;
   width: 18px;
   left: 3px;
