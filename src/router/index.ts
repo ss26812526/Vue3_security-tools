@@ -14,6 +14,11 @@ const router = createRouter({
       name: 'base64',
       component: () => import('../views/Base64View.vue'),
     },
+    {
+      path: '/practice',
+      name: 'practice',
+      component: () => import('../views/PracticeView.vue'),
+    },
     // 未來新增其他功能頁面，只需在這裡加入路由
     // {
     //   path: '/hash',

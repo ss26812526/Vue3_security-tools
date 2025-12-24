@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
+import { ref, reactive, watchEffect } from 'vue' //reactive 目前未使用可移除，但是通常都會用到，ref和reactive是最基本套件
 import { RouterLink, RouterView, useRoute } from 'vue-router'
 
 // 主題切換
@@ -12,13 +12,6 @@ watchEffect(() => {
 
 // 取得當前路由，用於判斷是否顯示返回按鈕
 const route = useRoute()
-
-const selected = ref([])
-const options = ref([
-  { value: 'A', text: 'One' },
-  { value: 'B', text: 'Two' },
-  { value: 'C', text: 'Three' },
-])
 </script>
 
 <template>
@@ -45,16 +38,6 @@ const options = ref([
       <RouterView />
     </main>
   </div>
-
-  <span>Selected: {{ selected }}</span>
-  <hr />
-  <template v-for="item of options" :key="item.value">
-    <input type="checkbox" v-model="selected" :value="item.value" /> {{ item.text }}
-  </template>
-
-  <select v-model="selected" multiple>
-    <option v-for="item of options" :value="item.value" :key="item.value">{{ item.text }}</option>
-  </select>
 </template>
 
 <style scoped>

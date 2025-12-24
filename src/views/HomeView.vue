@@ -26,6 +26,12 @@ import { RouterLink } from 'vue-router'
         <h3>密碼產生器</h3>
         <p>產生隨機安全密碼（即將推出）</p>
       </div>
+
+      <RouterLink to="/practice" class="tool-card practice">
+        <div class="icon">📝</div>
+        <h3>Vue3 練習場</h3>
+        <p>學習與複習 Vue3 語法</p>
+      </RouterLink>
     </div>
   </div>
 </template>
