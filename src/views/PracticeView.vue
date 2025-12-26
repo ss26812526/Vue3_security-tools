@@ -1,38 +1,35 @@
 <script setup lang="ts">
 // ========== Vue3 練習區 ==========
 // 常用引入，依需求使用：
-import { ref, reactive, computed, watch, watchEffect } from 'vue'
+import { ref, reactive, computed, watch, watchEffect, onMounted } from 'vue'
 
 // 在這裡開始練習...
-import TodoItem from '@/components/TodoItem.vue'
-import TodoList from '@/components/TodoList.vue'
+const numbers = ref([1, 2, 3, 4, 5])
+const itemRefs = ref([])
 
-const gorceryList = ref([
-  { id: 0, text: 'Vegetables' },
-  { id: 1, text: 'Cheese' },
-  { id: 2, text: 'Whatever else humans are supposed to eat' },
-])
+onMounted(() => {
+  alert(itemRefs.value.map((i) => i.textContent))
+})
+
+function refHandler(el) {
+  if (el) el.focus()
+}
 </script>
 
 <template>
   <div class="practice-page">
     <h1>Vue3 練習場</h1>
     <p class="hint">編輯 src/views/PracticeView.vue 開始練習！</p>
-
     <hr />
-
     <!-- 在這裡練習 Template -->
     <div class="practice-area">
       <p>-----開始你的練習-----</p>
 
-      <ol>
-        <!-- <li v-for="item of gorceryList">{{ item.text }}</li> -->
-        <TodoItem v-for="item of gorceryList" :key="item.id" :item="item" />
-      </ol>
-
-      <ol>
-        <TodoList :list="gorceryList" />
-      </ol>
+      <ul>
+        <li v-for="number of numbers" ref="itemRefs">
+          {{ number }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>

@@ -94,24 +94,30 @@ h1 {
   border-color: #e0e0e0;
   box-shadow: none;
 }
-/* 深色模式 */
-:global(body.dark-theme) h1 {
+</style>
+
+<style>
+/* 深色模式 - 全域樣式 */
+body.dark-theme .home h1 {
   color: #eee;
 }
-:global(body.dark-theme) .subtitle {
+body.dark-theme .home .subtitle {
   color: #aaa;
 }
-:global(body.dark-theme) .tool-card {
+body.dark-theme .home .tool-card {
   background: #1a1a2e;
   border-color: #0f3460;
 }
-:global(body.dark-theme) .tool-card h3 {
+body.dark-theme .home .tool-card h3 {
   color: #eee;
 }
-:global(body.dark-theme) .tool-card p {
+body.dark-theme .home .tool-card p {
   color: #aaa;
 }
-:global(body.dark-theme) .tool-card:hover {
+body.dark-theme .home .tool-card:hover {
   border-color: #42b883;
+}
+body.dark-theme .home .coming-soon:hover {
+  border-color: #0f3460;
 }
 </style>
