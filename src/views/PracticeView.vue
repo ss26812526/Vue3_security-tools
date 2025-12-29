@@ -4,15 +4,16 @@
 import { ref, reactive, computed, watch, watchEffect, onMounted } from 'vue'
 
 // 在這裡開始練習...
-const numbers = ref([1, 2, 3, 4, 5])
-const itemRefs = ref([])
+import Comp from '@/components/Comp.vue'
 
-onMounted(() => {
-  alert(itemRefs.value.map((i) => i.textContent))
-})
-
-function refHandler(el) {
-  if (el) el.focus()
+const msg = ref('Hello World!')
+const props = {
+  greetingMessage: '123',
+  obj: { count: 1 },
+}
+const obj = reactive({ count: 4 })
+const addHandler = () => {
+  console.log('add')
 }
 </script>
 
@@ -25,11 +26,12 @@ function refHandler(el) {
     <div class="practice-area">
       <p>-----開始你的練習-----</p>
 
-      <ul>
-        <li v-for="number of numbers" ref="itemRefs">
-          {{ number }}
-        </li>
-      </ul>
+      <h1>{{ msg }}</h1>
+      <input v-model="msg" />
+      <br />
+      <Comp v-bind="props" @add="addHandler" />
+      <br />
+      <Comp greeting-message="來自父元件的問候！" :obj="obj" />
     </div>
   </div>
 </template>

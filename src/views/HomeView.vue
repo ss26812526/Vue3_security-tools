@@ -15,11 +15,11 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
 
       <!-- 未來可以在這裡新增更多工具卡片 -->
-      <div class="tool-card coming-soon">
+      <RouterLink to="/hash" class="tool-card">
         <div class="icon">🔒</div>
         <h3>Hash 產生器</h3>
-        <p>MD5 / SHA-1 / SHA-256（即將推出）</p>
-      </div>
+        <p>SHA-256 / SHA-384 / SHA-512</p>
+      </RouterLink>
 
       <div class="tool-card coming-soon">
         <div class="icon">🔑</div>

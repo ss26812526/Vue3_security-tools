@@ -19,11 +19,16 @@ const router = createRouter({
       name: 'practice',
       component: () => import('../views/PracticeView.vue'),
     },
+    {
+      path: '/hash',
+      name: 'hash',
+      component: () => import('../views/HashView.vue'),
+    },
     // 未來新增其他功能頁面，只需在這裡加入路由
     // {
-    //   path: '/hash',
-    //   name: 'hash',
-    //   component: () => import('../views/HashView.vue'),
+    //   path: '/example',
+    //   name: 'example',
+    //   component: () => import('../views/ExampleView.vue'),
     // },
   ],
 })
